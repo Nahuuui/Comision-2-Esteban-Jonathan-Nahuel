@@ -8,4 +8,4 @@ comentariorouter.post("/:postId", createCommentController  );
 comentariorouter.put("/:commentId", editCommentController );
 comentariorouter.delete("/:commentId",  deleteCommentController); 
 
-export { commentRouter };
+export { comentariorouter };
