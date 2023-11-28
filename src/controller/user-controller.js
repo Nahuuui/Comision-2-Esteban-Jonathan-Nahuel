@@ -1,3 +1,8 @@
+import jwt from "jsonwebtoken";
+import {dbConfig} from "../db/db-config.js"
+import bcrypt from "bcrypt"
+import {UserModel} from "../models/user-model.js"
+
 // Controlador para registrar nuevos usuarios
 const registerUserController = async (req, res) => {
     try {
@@ -45,7 +50,7 @@ const registerUserController = async (req, res) => {
       }
   
       // Generar un token de autenticación utilizando jwt
-      const token = jwt.sign({ userId: user._id }, config.jwtSecret);
+      const token = jwt.sign({ userId: user._id }, dbConfig.jwtSecret);
       // Agregar el token a la lista de tokens del usuario
       user.tokens.push({ token });
       // Guardar los cambios en el usuario
