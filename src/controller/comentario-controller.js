@@ -1,6 +1,19 @@
 import {CommentModel} from "../models/comentario-model.js"
 import {PostModel} from "../models/post-model.js"
 
+const getCommentsForPosts = async (req, res) => {
+  try {
+    const postId = req.params.postId;
+
+    const comments = await CommentModel.find({ postId }).populate('author');
+
+    res.status(200).json(comments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener comentarios.' });
+  }
+};
+
 // Controlador para la creación de comentarios
 const createCommentController = async (req, res) => {
     try {
@@ -97,4 +110,6 @@ const createCommentController = async (req, res) => {
     createCommentController,
     deleteCommentController,
     editCommentController,
+    getCommentsForPosts, 
+
   };

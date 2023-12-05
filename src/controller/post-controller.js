@@ -1,5 +1,24 @@
 import {PostModel} from "../models/post-model.js"
 
+const getPostByIdController = async (req, res) => {
+  try {
+      const postId = req.params.postId;
+      const post = await PostModel.findById(postId).populate('author', 'username avatarURL').populate({
+          path: 'comments',
+          populate: { path: 'author', select: 'username avatarURL' },
+      });
+
+      if (!post) {
+          return res.status(404).json({ error: 'Post no encontrado.' });
+      }
+
+      res.status(200).json(post);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al obtener el post.' });
+  }
+};
+
 // Controlador para obtener todas las publicaciones
 const getPostsController = async (req, res) => {
     try {
@@ -102,4 +121,5 @@ const getPostsController = async (req, res) => {
     createPostController,
     deletePostController,
     editPostController,
+    getPostByIdController,
   };

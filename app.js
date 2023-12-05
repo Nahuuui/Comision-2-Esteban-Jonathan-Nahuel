@@ -29,10 +29,10 @@ app.options('*', (req, res) => {
 
 // router
 app.use('/users', userouter)
-app.use('/posts', autotenMiddleware , postrouter)
+app.use('/posts', postrouter)
 app.use('/comments', autotenMiddleware ,comentariorouter)
 app.use('/', (req, res)=> {
-    res.send('Pagina inicial')
+    res.json({mensaje:'Pagina inicial'})
 })
 
 // data base
