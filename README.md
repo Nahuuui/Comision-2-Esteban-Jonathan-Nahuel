@@ -83,6 +83,6 @@ Segun lo que hayamos definido en el PORT de nuestro archivo .env ira allí el pu
 # Uso
 
 1) inicie el backend desde la carpeta raiz node: npm run dev
-2) inicie el frontend desde la carpeta raiz react: npm run dev
+2) inicie el frontend desde la carpeta raiz frontReact: npm run dev
 
 
