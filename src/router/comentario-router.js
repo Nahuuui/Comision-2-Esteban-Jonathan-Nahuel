@@ -7,5 +7,5 @@ const comentariorouter= Router();
 comentariorouter.post("/:postId", createCommentController  ); 
 comentariorouter.put("/:commentId", editCommentController );
 comentariorouter.delete("/:commentId",  deleteCommentController); 
-comentariorouter.post("/:postId", getCommentsForPosts  );
+comentariorouter.get("/:postId", getCommentsForPosts  );
 export { comentariorouter };

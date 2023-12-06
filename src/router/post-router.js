@@ -7,7 +7,8 @@ const postrouter = Router();
 
 
 postrouter.get("/", getPostsController); 
-postrouter.get("/:postId", getPostByIdController)
+postrouter.get("/:postId", getPostByIdController);
+
 postrouter.use(autotenMiddleware)
 
 postrouter.post("/createPost", createPostController );
